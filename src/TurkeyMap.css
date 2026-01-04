@@ -1,0 +1,190 @@
+.turkey-map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.turkey-map-container h2 {
+  margin: 0;
+  color: #333;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: center;
+}
+
+.loading {
+  font-size: 1.5rem;
+  padding: 40px;
+  color: #666;
+}
+
+.map-wrapper {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+.turkey-map-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.province {
+  fill: #e8f4f8;
+  stroke: #2c3e50;
+  stroke-width: 0.5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.province:hover,
+.province.hovered {
+  fill: #3498db;
+  stroke: #1a5490;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 8px rgba(52, 152, 219, 0.8));
+}
+
+.province.selected {
+  fill: #e74c3c;
+  stroke: #c0392b;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 1px rgba(231, 76, 60, 0.9));
+}
+
+.tooltip {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+  max-width: 200px;
+  word-wrap: break-word;
+}
+
+.info-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  min-width: 180px;
+  max-width: 280px;
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+}
+
+.info-panel h3 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+.info-panel p {
+  margin: 0 0 15px 0;
+  color: #555;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.info-panel button {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
+  font-weight: 600;
+  transition: background 0.2s ease;
+  width: 100%;
+}
+
+.info-panel button:hover {
+  background: #c0392b;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .turkey-map-container {
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .tooltip {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+
+  .info-panel {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    min-width: auto;
+    padding: 15px;
+  }
+
+  .province {
+    stroke-width: 0.3;
+  }
+
+  .province:hover,
+  .province.hovered {
+    stroke-width: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .turkey-map-container {
+    padding: 5px;
+  }
+
+  .turkey-map-svg {
+    border-radius: 4px;
+  }
+}
